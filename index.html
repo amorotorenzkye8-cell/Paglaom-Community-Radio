@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAGLAOM COMMUNITY RADIO</title>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      margin: 40px auto;
+      position: relative;
+    }
+
+    /* CONTACT MENU */
+    .contact-menu {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hamburger div {
+      height: 4px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .contact-label {
+      color: white;
+      font-weight: bold;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .contact-info {
+      display: none;
+      margin-top: 10px;
+      background: #2563eb;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .contact-info p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    /* HEADER & LOGO */
+    .header {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-container {
+      margin-bottom: 30px;
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .logo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .station-name {
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+      margin: 20px 0 10px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .tagline {
+      font-size: 20px;
+      color: #e0e7ff;
+      margin: 0;
+      font-weight: 300;
+    }
+
+    /* SOUNDWAVE */
+    .soundwave-container {
+      background: linear-gradient(to bottom, #f8fafc 0%, #e0e7ff 100%);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .soundwave {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 120px;
+      margin-bottom: 40px;
+    }
+
+    .bar {
+      width: 12px;
+      background: linear-gradient(to top, #2563eb, #60a5fa);
+      border-radius: 6px;
+      animation: wave 1.2s ease-in-out infinite;
+    }
+
+    .bar:nth-child(1) { animation-delay: 0s; height: 40%; }
+    .bar:nth-child(2) { animation-delay: 0.1s; height: 60%; }
+    .bar:nth-child(3) { animation-delay: 0.2s; height: 80%; }
+    .bar:nth-child(4) { animation-delay: 0.3s; height: 100%; }
+    .bar:nth-child(5) { animation-delay: 0.4s; height: 70%; }
+    .bar:nth-child(6) { animation-delay: 0.5s; height: 90%; }
+    .bar:nth-child(7) { animation-delay: 0.6s; height: 60%; }
+    .bar:nth-child(8) { animation-delay: 0.7s; height: 80%; }
+    .bar:nth-child(9) { animation-delay: 0.8s; height: 50%; }
+    .bar:nth-child(10) { animation-delay: 0.9s; height: 70%; }
+
+    @keyframes wave {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(0.3); }
+    }
+
+    .play-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white;
+      padding: 20px 50px;
+      border-radius: 50px;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .play-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.5);
+      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+    }
+
+    .play-icon {
+      width: 0;
+      height: 0;
+      border-left: 20px solid white;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      margin-left: 5px;
+    }
+
+    /* INFO SECTION */
+    .info-section {
+      padding: 60px 40px;
+      background: white;
+    }
+
+    .info-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #1e40af;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .info-content {
+      font-size: 18px;
+      color: #475569;
+      line-height: 1.8;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+    }
+
+    .station-details {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .detail-item {
+      text-align: center;
+    }
+
+    .detail-label {
+      font-size: 14px;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .detail-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    .footer {
+      background: #1e293b;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .station-name { font-size: 32px; }
+      .tagline { font-size: 16px; }
+      .play-button { font-size: 20px; padding: 16px 40px; }
+      .info-title { font-size: 24px; }
+      .info-content { font-size: 16px; }
+      .station-details { gap: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- CONTACT MENU -->
+    <div class="contact-menu">
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="contact-label">Contact Us</div>
+      <div class="contact-info" id="contact-info">
+        <p>📞 +63 912 913 6490</p>
+        <p>📧 paglaomfm@gmail.com</p>
+        <p>🌐 fb.com/PaglaomCommunityRadio</p>
+      </div>
+    </div>
+
+    <!-- HEADER & LOGO -->
+    <div class="header">
+      <div class="logo-container">
+        <div class="logo">
+          <img src="paglaomlogo.jpg" alt="PAGLAOM COMMUNITY RADIO Logo">
+        </div>
+      </div>
+      <h1 class="station-name">PAGLAOM COMMUNITY RADIO</h1>
+      <p class="tagline">Your Good News Radio</p>
+    </div>
+
+    <!-- SOUNDWAVE & PLAY -->
+    <div class="soundwave-container">
+      <div class="soundwave">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div style="text-align: center;">
+        <a href="https://paglaomcommunityradio.listen2myshow.com" class="play-button" target="_blank">
+          <span>LISTEN LIVE</span>
+          <div class="play-icon"></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- INFO SECTION -->
+    <div class="info-section">
+      <h2 class="info-title">About Our Station</h2>
+      <p class="info-content">
+        This is Paglaom Community Radio, committed to sharing the Gospel, uplifting songs, and inspiring development in our community. Tune in to experience meaningful content and music that brings hope.
+      </p>
+      <div class="station-details">
+        <div class="detail-item">
+          <div class="detail-label">Frequency</div>
+          <div class="detail-value">95.5 FM</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Location</div>
+          <div class="detail-value">Mandaon, Masbate, Philippines</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2024 PAGLAOM COMMUNITY RADIO. All rights reserved. Broadcasting excellence since day one.</p>
+    </div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const contactInfo = document.getElementById('contact-info');
+
+    hamburger.addEventListener('click', () => {
+      contactInfo.style.display = contactInfo.style.display === "block" ? "none" : "block";
+    });
+  </script>
+</body>
+</html>
